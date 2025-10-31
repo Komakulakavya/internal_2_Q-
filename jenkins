@@ -1,5 +1,4 @@
 pipeline{
-    agent none
     stages{
         stage('setup')
         {
@@ -34,4 +33,5 @@ pipeline{
             echo "build failed"
         }
     }
+
 }
