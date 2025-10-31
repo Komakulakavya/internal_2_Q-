@@ -1,0 +1,37 @@
+pipeline{
+    agent none
+    stages{
+        stage('setup')
+        {
+            steps{
+                echo "installing dependencies"
+                bat 'pip install -r requirements.txt'
+            }
+        }
+        stage('building app')
+        {
+            steps{
+                echo "running app"
+                bat 'python app.py'
+            }
+        }
+        stage('testing app'){
+            steps{
+                echo "testing app"
+            }
+        }
+        stage('artifacts'){
+            steps{
+                archiveArtifacts artifacts: '**/.txt', fingerprint: true
+            }
+        }
+    }
+    post{
+        success{
+            echo "build successful"
+        }
+        failure{
+            echo "build failed"
+        }
+    }
+}
