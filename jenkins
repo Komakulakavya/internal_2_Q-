@@ -25,7 +25,7 @@ pipeline {
         stage('Archive Artifacts') {
             steps {
                 echo 'Archiving artifacts...'
-                archiveArtifacts artifacts: '**/*.txt','app.py', fingerprint: true
+                archiveArtifacts artifacts: '**/*.txt', fingerprint: true
             }
         }
     }
@@ -39,6 +39,7 @@ pipeline {
         }
     }
 }
+
 
 
 
